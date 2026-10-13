@@ -1,0 +1,15 @@
+--rotar izquierda
+
+pp:: Int -> [Int]->[Int]
+pp _ [] = []
+pp 0 xs = xs
+pp x (y:ys) = pp (x-1) (ys ++ [y])
+
+
+
+
+main :: IO ()
+main = do
+    let lista = [10,20,30,40,50]
+    
+    print( pp 7 lista)
