@@ -1,0 +1,33 @@
+
+
+
+
+verificar:: Int -> Int -> Bool
+verificar x i 
+    | x < 2 = False
+    | i == x = True
+    | x `mod` i == 0 = False
+    | otherwise = verificar x (i+1)
+
+
+
+verificarPrimo :: Int -> Bool
+verificarPrimo n = verificar n 2
+
+
+generar :: Int -> Int -> Int -> [Int]
+generar x1 x2 n 
+    | x1 > n = []
+    | otherwise = x1 : generar x2 (x1+x2) n
+
+f :: Int -> [Int]
+f n = generar 0 1 n
+
+
+primos:: Int -> [Int]
+primos n = filter verificarPrimo (f n)
+
+
+main :: IO()
+main = do
+    print(primos 13)
